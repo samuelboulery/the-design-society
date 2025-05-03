@@ -5,6 +5,7 @@ import Team from './components/Team';
 import Events from './components/Events';
 import Admin from './components/Admin.jsx';
 import Header from './components/Header.jsx';
+import DinoEasterEgg from './components/DinoEasterEgg';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
+      <DinoEasterEgg />
     </Router>
   );
 }
