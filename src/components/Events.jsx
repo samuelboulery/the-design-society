@@ -104,12 +104,12 @@ export default function Events() {
     <section className="py-8">
       <h2 className="text-2xl font-semibold mb-4 text-center">Prochain événement</h2>
       {upcoming ? (
-        <div className="border p-4 rounded-lg mb-6">
+        <div className="border p-4 rounded-lg mb-16">
           {upcoming.image_url && isValidImageUrl(upcoming.image_url) && (
             <img 
               src={upcoming.image_url} 
               alt={upcoming.title}
-              className="w-full h-48 object-cover rounded-lg mb-4"
+              className="w-full h-48 object-cover rounded-md mb-4"
             />
           )}
           <h3 className="text-xl font-bold">{upcoming.title}</h3>
@@ -122,15 +122,15 @@ export default function Events() {
 
       {past.length > 0 && (
         <>
-          <h2 className="text-2xl font-semibold mb-4 text-center">Événements précédents</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-center">Événements passés</h2>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {past.slice(0, 3).map((e) => (
-              <li key={e.id} className="border p-4 rounded-lg hover:shadow-lg transition-shadow">
+              <li key={e.id} className="border p-4 rounded-lg">
                 {e.image_url && isValidImageUrl(e.image_url) && (
                   <img 
                     src={e.image_url} 
                     alt={e.title}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
+                    className="w-full h-48 object-cover rounded-md mb-4"
                   />
                 )}
                 <h3 className="font-medium text-lg">{e.title}</h3>
