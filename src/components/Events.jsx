@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
+import { mockEvents } from '../mockData';
 
 export default function Events() {
   const [events, setEvents] = useState([]);
@@ -7,11 +8,16 @@ export default function Events() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Vérification de la configuration Supabase
-    console.log('URL Supabase:', import.meta.env.VITE_SUPABASE_URL);
-    console.log('Clé Supabase présente:', !!import.meta.env.VITE_SUPABASE_ANON_KEY);
-    
-    fetchEvents();
+    if (import.meta.env.DEV) {
+      // En mode développement, utiliser les données fictives
+      console.log('Mode développement : utilisation des données fictives');
+      setEvents(mockEvents);
+      setLoading(false);
+    } else {
+      // En production, utiliser Supabase
+      console.log('Mode production : utilisation de Supabase');
+      fetchEvents();
+    }
   }, []);
 
   async function fetchEvents() {
@@ -114,26 +120,26 @@ export default function Events() {
         <p className="text-center text-gray-600">Aucun événement à venir.</p>
       )}
 
-      <h2 className="text-2xl font-semibold mb-4 text-center">Événements précédents</h2>
-      {past.length > 0 ? (
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {past.slice(0, 3).map((e) => (
-            <li key={e.id} className="border p-4 rounded-lg hover:shadow-lg transition-shadow">
-              {e.image_url && isValidImageUrl(e.image_url) && (
-                <img 
-                  src={e.image_url} 
-                  alt={e.title}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-              )}
-              <h3 className="font-medium text-lg">{e.title}</h3>
-              <p className="text-sm text-gray-600">{new Date(e.date).toLocaleDateString('fr-FR')}</p>
-              <p className="mt-2 text-sm text-gray-700 line-clamp-3">{e.description}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-center text-gray-600">Aucun événement passé.</p>
+      {past.length > 0 && (
+        <>
+          <h2 className="text-2xl font-semibold mb-4 text-center">Événements précédents</h2>
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {past.slice(0, 3).map((e) => (
+              <li key={e.id} className="border p-4 rounded-lg hover:shadow-lg transition-shadow">
+                {e.image_url && isValidImageUrl(e.image_url) && (
+                  <img 
+                    src={e.image_url} 
+                    alt={e.title}
+                    className="w-full h-48 object-cover rounded-lg mb-4"
+                  />
+                )}
+                <h3 className="font-medium text-lg">{e.title}</h3>
+                <p className="text-sm text-gray-600">{new Date(e.date).toLocaleDateString('fr-FR')}</p>
+                <p className="mt-2 text-sm text-gray-700 line-clamp-3">{e.description}</p>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </section>
   );

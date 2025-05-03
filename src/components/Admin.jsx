@@ -86,8 +86,21 @@ export default function Admin() {
 
   async function deleteEvent(id) {
     if (confirm('Supprimer cet événement ?')) {
-      await supabase.from('events').delete().eq('id', id);
-      fetchEvents();
+      try {
+        const { error } = await supabase.from('events').delete().eq('id', id);
+        
+        if (error) {
+          console.error('Erreur lors de la suppression:', error);
+          alert('Erreur lors de la suppression: ' + error.message);
+          return;
+        }
+        
+        console.log('Événement supprimé avec succès');
+        fetchEvents();
+      } catch (err) {
+        console.error('Erreur inattendue lors de la suppression:', err);
+        alert('Une erreur est survenue lors de la suppression: ' + err.message);
+      }
     }
   }
 
