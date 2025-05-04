@@ -14,5 +14,14 @@ export default defineConfig({
         '.js': 'jsx'
       }
     }
+  },
+  server: {
+    proxy: {
+      '/api/slack': {
+        target: 'https://hooks.slack.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/slack/, '')
+      }
+    }
   }
 })

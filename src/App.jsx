@@ -5,6 +5,7 @@ import Events from './components/Events';
 import Admin from './components/Admin.jsx';
 import Header from './components/Header.jsx';
 import DinoEasterEgg from './components/DinoEasterEgg';
+import ContactForm from './components/ContactForm';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
                 <Header />
                 <Events />
                 <Team />
+                <ContactForm />
               </>
             }
           />
