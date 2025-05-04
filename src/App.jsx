@@ -9,13 +9,13 @@ import DinoEasterEgg from './components/DinoEasterEgg';
 function App() {
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <Header />
       <main className="max-w-3xl mx-auto p-4 font-sans">
         <Routes>
           <Route
             path="/"
             element={
               <>
+                <Header />
                 <Events />
                 <Team />
               </>
