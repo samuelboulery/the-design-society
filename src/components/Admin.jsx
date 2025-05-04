@@ -6,7 +6,7 @@ export default function Admin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [events, setEvents] = useState([]);
-  const [form, setForm] = useState({ id: null, title: '', description: '', date: '', image_url: '' });
+  const [form, setForm] = useState({ id: null, title: '', description: '', date: '', image_url: '', eventbrite_url: '' });
 
   useEffect(() => {
     // Vérifie si l'utilisateur est déjà connecté
@@ -48,7 +48,8 @@ export default function Admin() {
             title: form.title, 
             description: form.description, 
             date: form.date,
-            image_url: form.image_url 
+            image_url: form.image_url,
+            eventbrite_url: form.eventbrite_url
           })
           .eq('id', form.id);
         
@@ -66,7 +67,8 @@ export default function Admin() {
             title: form.title, 
             description: form.description, 
             date: form.date,
-            image_url: form.image_url 
+            image_url: form.image_url,
+            eventbrite_url: form.eventbrite_url
           });
         
         if (error) {
@@ -76,7 +78,7 @@ export default function Admin() {
         }
         console.log('Événement ajouté avec succès:', data);
       }
-      setForm({ id: null, title: '', description: '', date: '', image_url: '' });
+      setForm({ id: null, title: '', description: '', date: '', image_url: '', eventbrite_url: '' });
       fetchEvents();
     } catch (err) {
       console.error('Erreur inattendue:', err);
@@ -110,7 +112,8 @@ export default function Admin() {
       title: evt.title, 
       description: evt.description, 
       date: evt.date,
-      image_url: evt.image_url || '' 
+      image_url: evt.image_url || '',
+      eventbrite_url: evt.eventbrite_url || ''
     });
   }
 
@@ -173,6 +176,13 @@ export default function Admin() {
           className="w-full p-2 border rounded"
           value={form.image_url}
           onChange={(e) => setForm({ ...form, image_url: e.target.value })}
+        />
+        <input
+          type="url"
+          placeholder="URL Eventbrite"
+          className="w-full p-2 border rounded"
+          value={form.eventbrite_url}
+          onChange={(e) => setForm({ ...form, eventbrite_url: e.target.value })}
         />
         <button type="submit" className="px-4 py-2 bg-green-600 text-white rounded">
           {form.id ? 'Modifier' : 'Ajouter'}

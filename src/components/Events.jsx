@@ -115,6 +115,16 @@ export default function Events() {
           <h3 className="text-xl font-bold">{upcoming.title}</h3>
           <p>{new Date(upcoming.date).toLocaleDateString('fr-FR')}</p>
           <p className="mt-2">{upcoming.description}</p>
+          {upcoming.eventbrite_url && (
+            <a 
+              href={upcoming.eventbrite_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-4 px-6 py-2 bg-[#F6682F] text-white rounded-md hover:bg-[#E55A1F] transition-colors"
+            >
+              S'inscrire sur Eventbrite
+            </a>
+          )}
         </div>
       ) : (
         <p className="text-center text-gray-600">Aucun événement à venir.</p>

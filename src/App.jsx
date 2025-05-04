@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import About from './components/About';
 import Team from './components/Team';
 import Events from './components/Events';
 import Admin from './components/Admin.jsx';
