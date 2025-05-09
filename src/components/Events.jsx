@@ -124,7 +124,7 @@ export default function Events() {
             <img
             src={upcoming.image_url}
             alt={upcoming.title}
-            className="w-full h-64 object-cover"
+            className="w-[480px] h-64 object-cover"
             />
           )}
           <div className="content flex flex-col grow justify-between">
@@ -169,6 +169,5 @@ export default function Events() {
           </ul>
         </>
       )}
-    </section>
-  );
+    </section> );
 }
