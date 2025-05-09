@@ -131,7 +131,7 @@ export default function Events() {
             <div className="text-content">
               <h3 className="text-xl font-bold">{upcoming.title}</h3>
               <p>{formatDate(upcoming.date)}</p>
-              <p className="mt-2">{upcoming.description}</p>
+              <p className="mt-2 line-clamp-4">{upcoming.description}</p>
             </div>
             {upcoming.eventbrite_url && (
               <a
