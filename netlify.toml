@@ -13,4 +13,40 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200 
+  status = 200
+
+# Règles de sécurité pour bloquer les requêtes suspectes
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;"
+
+# Blocage des User-Agents suspects
+[[redirects]]
+  from = "/*"
+  to = "/403.html"
+  status = 403
+  force = true
+  conditions = {User_Agent = ["*bot*", "*crawler*", "*spider*", "*AI*", "*GPT*", "*Claude*", "*Anthropic*"]}
+  [redirects.exceptions]
+    User_Agent = ["*Googlebot*"]
+
+# Blocage des IPs suspectes (à adapter selon vos besoins)
+[[redirects]]
+  from = "/*"
+  to = "/403.html"
+  status = 403
+  force = true
+  conditions = {IP = ["1.2.3.4", "5.6.7.8"]} # Remplacez par les IPs à bloquer
+
+# Protection contre les attaques par force brute
+[[redirects]]
+  from = "/*"
+  to = "/403.html"
+  status = 403
+  force = true
+  conditions = {Rate_Limit = "100/minute"} 

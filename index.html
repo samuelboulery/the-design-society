@@ -3,12 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="noindex, nofollow" />
+  <meta name="slurp" content="noindex, nofollow" />
+  <meta name="ai" content="noindex, nofollow" />
+  <meta name="generator" content="no" />
+  <meta name="referrer" content="no-referrer" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <title>The Design Society</title>
+  <script>
+    // Détection des crawlers et des IA, en excluant Google
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isGoogleBot = /googlebot/i.test(userAgent);
+    const isOtherBot = /bot|crawler|spider|crawling|ai|gpt|chatgpt|claude|anthropic/i.test(userAgent) && !isGoogleBot;
+    
+    if (isOtherBot) {
+      // Redirection vers une page d'erreur ou affichage d'un message
+      document.body.innerHTML = '<div style="text-align: center; padding: 50px;"><h1>Accès non autorisé</h1><p>Les robots et les IA ne sont pas autorisés sur ce site.</p></div>';
+    }
+  </script>
 </head>
-<body class="min-h-full flex flex-col">
+<body class="min-h-full text-primary flex flex-col">
   <div id="root" class="flex-1"></div>
   <footer class="text-center py-5 mt-5 text-gray-500">
     Tous droits réservés - The (not so secret) Design Society - <span id="currentYear"></span>
