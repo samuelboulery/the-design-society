@@ -124,10 +124,10 @@ export default function Events() {
             <img
             src={upcoming.image_url}
             alt={upcoming.title}
-            className="w-[480px] h-64 object-cover"
+            className="w-[356px] min-w-[356px] h-64 object-cover"
             />
           )}
-          <div className="content flex flex-col grow justify-between">
+          <div className="content grow flex flex-col justify-between">
             <div className="text-content">
               <h3 className="text-xl font-bold">{upcoming.title}</h3>
               <p>{formatDate(upcoming.date)}</p>
