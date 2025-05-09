@@ -30,19 +30,20 @@ const members = [
 
 export default function Team() {
   return (
-    <section className="mt-16 py-8">
-      <h2 className="text-2xl font-semibold mb-4 text-center">L'équipe</h2>
+    <section className="mt-32 text-primary source-sans py-8 flex flex-col items-center relative">
+      <h2 className="text-2xl bowlby text-4xl mb-4 relative"><img src="/images/the.svg" alt="the" className="w-1/8 absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2" />Dream Team</h2>
+      <img src="/images/omg.svg" alt="omg" className="w-1/2 absolute top-[-60px] left-[-190px] z-[-1]" />
       <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {members.map((m) => (
-          <li key={m.name} className="text-center p-4 border rounded-lg">
-            <div className="w-full h-32 mx-auto mb-4 rounded-md overflow-hidden">
+          <li key={m.name} className="border bg-white border-primary border-4 p-3 shadow-[0.75rem_0.75rem_0_0_#252740]">
+            <div className="w-full mx-auto mb-4">
               <img 
                 src={m.image} 
                 alt={m.name}
-                className="w-full h-full object-cover"
+                className="w-full aspect-square object-cover"
               />
             </div>
-            <h3 className="text-xl font-medium">{m.name}</h3>
+            <h3 className="text-xl font-bold">{m.name}</h3>
             <p className="text-gray-600">{m.role}</p>
           </li>
         ))}
