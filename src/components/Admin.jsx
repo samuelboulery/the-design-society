@@ -240,6 +240,7 @@ export default function Admin() {
               <img 
                 src={form.image_url} 
                 alt="Aperçu" 
+                width="128" height="128"
                 className="w-32 h-32 object-cover rounded"
               />
             </div>
@@ -270,6 +271,7 @@ export default function Admin() {
                 <img 
                   src={evt.image_url} 
                   alt={evt.title}
+                  width="80" height="80"
                   className="w-20 h-20 object-cover rounded mt-2"
                 />
               )}
