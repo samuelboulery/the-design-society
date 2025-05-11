@@ -3,28 +3,33 @@ import React from 'react';
 const members = [
   { 
     name: 'Samuel Boulery', 
-    role: 'System Designer @EDF',
-    image: 'https://media.licdn.com/dms/image/v2/D4E03AQHw-pZp2tABBw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731875014620?e=1751500800&v=beta&t=wnr5tbwyJGZG3wGuDR2EM2ex4V8JyTMqtXQ9Kc8xVXI'
+    role: 'System Designer',
+    image: 'https://media.licdn.com/dms/image/v2/D4E03AQHw-pZp2tABBw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731875014620?e=1751500800&v=beta&t=wnr5tbwyJGZG3wGuDR2EM2ex4V8JyTMqtXQ9Kc8xVXI',
+    linkedin: 'https://www.linkedin.com/in/samuel-boulery/'
   },
   { 
     name: 'Daniela Moncada', 
-    role: 'UX/UI Designer @EDF',
-    image: 'https://media.licdn.com/dms/image/v2/C4D03AQEP95sz8Jp1zQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1603805161907?e=1751500800&v=beta&t=4lYBFXzGxgtcNcdhjYJ0KlEVmCISldHqcC41yHy2BPU'
+    role: 'UX/UI Designer',
+    image: 'https://media.licdn.com/dms/image/v2/C4D03AQEP95sz8Jp1zQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1603805161907?e=1751500800&v=beta&t=4lYBFXzGxgtcNcdhjYJ0KlEVmCISldHqcC41yHy2BPU',
+    linkedin: 'https://www.linkedin.com/in/daniela-moncada-alvarez/'
   },
   { 
     name: 'Floriane Julliard', 
-    role: 'System Designer @EDF',
-    image: 'https://media.licdn.com/dms/image/v2/D4E03AQEsXdhKIpwWaQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1680599287273?e=1751500800&v=beta&t=398uYboy5Gp3oAxUXR-Z3Y2dyItIkD8rqV7rMiQ9Odw'
+    role: 'System Designer',
+    image: 'https://media.licdn.com/dms/image/v2/D4E03AQEsXdhKIpwWaQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1680599287273?e=1751500800&v=beta&t=398uYboy5Gp3oAxUXR-Z3Y2dyItIkD8rqV7rMiQ9Odw',
+    linkedin: 'https://www.linkedin.com/in/floriane-julliard/'
   },
   { 
     name: 'Loic Pelletier', 
-    role: 'Lead Product Designer @EDF',
-    image: 'https://media.licdn.com/dms/image/v2/D4E03AQGFP_-b6-8ulA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1696577782501?e=1751500800&v=beta&t=Km8I4ITmPHDYcT9CezIk9HmjMMQbUMsTMpbyV7BjCbA'
+    role: 'Lead Product Designer',
+    image: 'https://media.licdn.com/dms/image/v2/D4E03AQGFP_-b6-8ulA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1696577782501?e=1751500800&v=beta&t=Km8I4ITmPHDYcT9CezIk9HmjMMQbUMsTMpbyV7BjCbA',
+    linkedin: 'https://www.linkedin.com/in/loicpelletier/'
   },
   { 
     name: 'Léa Maurin', 
-    role: 'UX/UI Designer @EDF',
-    image: 'https://media.licdn.com/dms/image/v2/C5603AQFGJA7kH-CmLg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1549475892461?e=1751500800&v=beta&t=utWX_j-ADwdDwV9o9BPvlpJyyTL6yj55rgohOLjKDa4'
+    role: 'UX/UI Designer',
+    image: 'https://media.licdn.com/dms/image/v2/C5603AQFGJA7kH-CmLg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1549475892461?e=1751500800&v=beta&t=utWX_j-ADwdDwV9o9BPvlpJyyTL6yj55rgohOLjKDa4',
+    linkedin: 'https://www.linkedin.com/in/l%C3%A9a-maurin-b90061a4/'
   }
 ];
 
@@ -45,6 +50,14 @@ export default function Team() {
             </div>
             <h3 className="text-xl font-bold">{m.name}</h3>
             <p className="text-gray-600">{m.role}</p>
+            <a 
+              href={m.linkedin} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-block mt-2 px-4 py-2 bg-primary text-white hover:bg-accent transition-colors"
+            >
+              Profil LinkedIn
+            </a>
           </li>
         ))}
       </ul>

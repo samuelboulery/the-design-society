@@ -127,26 +127,31 @@ export default function ContactForm() {
 
   return (
     <section className="py-8 mt-24 md:mt-48 text-primary source-sans">
-      <h2 className="text-3xl md:text-4xl bowlby mb-4 text-center">Envie de papoter ?</h2>
+      <h2 className="text-2xl md:text-4xl bowlby mb-4 text-center">Envie de papoter ?</h2>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4 px-4 md:px-0">
-        <div>
+        <div className="relative">
           <label htmlFor="subjectType" className="block text-sm font-medium text-gray-700 mb-1">
             Le sujet de ton message
           </label>
-          <select
-            id="subjectType"
-            value={formData.subjectType}
-            onChange={(e) => setFormData({ ...formData, subjectType: e.target.value })}
-            className="w-full p-2 border border-primary border-2 focus:border-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none rounded-none"
-            required
-          >
-            <option value="">Sélectionne une option</option>
-            {SUBJECT_TYPES.map((type) => (
-              <option key={type.value} value={type.value}>
-                {type.label}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              id="subjectType"
+              value={formData.subjectType}
+              onChange={(e) => setFormData({ ...formData, subjectType: e.target.value })}
+              className="w-full p-2 border border-primary border-2 focus:border-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none rounded-none bg-white pr-10"
+              required
+            >
+              <option value="">Sélectionne une option</option>
+              {SUBJECT_TYPES.map((type) => (
+                <option key={type.value} value={type.value}>
+                  {type.label}
+                </option>
+              ))}
+            </select>
+            <span className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-primary">
+              <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M6 8l4 4 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </span>
+          </div>
         </div>
 
         <div>
