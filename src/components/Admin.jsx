@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
 import { uploadImage, deleteImage } from '../utils/storage';
+import { cleanupOrphanedImages, findEventsWithoutImages, cleanupOldEvents } from '../utils/imageCleanup';
 
 export default function Admin() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -9,6 +10,9 @@ export default function Admin() {
   const [events, setEvents] = useState([]);
   const [form, setForm] = useState({ id: null, title: '', description: '', date: '', image_url: '', eventbrite_url: '' });
   const [uploading, setUploading] = useState(false);
+  const [cleanupStatus, setCleanupStatus] = useState(null);
+  const [eventsWithoutImages, setEventsWithoutImages] = useState([]);
+  const [cleanupOldEventsStatus, setCleanupOldEventsStatus] = useState(null);
 
   useEffect(() => {
     // Vérifie si l'utilisateur est déjà connecté
@@ -79,6 +83,18 @@ export default function Admin() {
           return;
         }
         console.log('Événement ajouté avec succès:', data);
+
+        // Nettoyer les anciens événements après l'ajout d'un nouvel événement
+        try {
+          const result = await cleanupOldEvents();
+          if (result.totalDeleted > 0) {
+            setCleanupOldEventsStatus(
+              `${result.totalDeleted} ancien(s) événement(s) supprimé(s) automatiquement.`
+            );
+          }
+        } catch (cleanupError) {
+          console.error('Erreur lors du nettoyage automatique:', cleanupError);
+        }
       }
       setForm({ id: null, title: '', description: '', date: '', image_url: '', eventbrite_url: '' });
       fetchEvents();
@@ -170,6 +186,30 @@ export default function Admin() {
     });
   }
 
+  // Fonction pour nettoyer les images orphelines
+  async function handleCleanupImages() {
+    try {
+      setCleanupStatus('En cours...');
+      const result = await cleanupOrphanedImages();
+      setCleanupStatus(`Nettoyage terminé. ${result.deletedCount} images supprimées.`);
+      
+      // Rafraîchir la liste des événements
+      fetchEvents();
+    } catch (error) {
+      setCleanupStatus(`Erreur: ${error.message}`);
+    }
+  }
+
+  // Fonction pour vérifier les événements sans image
+  async function handleCheckEventsWithoutImages() {
+    try {
+      const eventsWithoutImages = await findEventsWithoutImages();
+      setEventsWithoutImages(eventsWithoutImages);
+    } catch (error) {
+      console.error('Erreur lors de la vérification des événements:', error);
+    }
+  }
+
   if (!authenticated) {
     return (
       <div className="max-w-md mx-auto mt-20 p-4 border rounded-lg">
@@ -200,6 +240,55 @@ export default function Admin() {
   return (
     <div className="max-w-2xl mx-auto py-8">
       <h2 className="text-2xl font-semibold mb-4">Gestion des événements</h2>
+      
+      {/* Section de nettoyage et vérification */}
+      <div className="mb-8 p-4 border rounded bg-gray-50">
+        <h3 className="text-lg font-semibold mb-4">Maintenance</h3>
+        
+        <div className="space-y-4">
+          <div>
+            <button
+              onClick={handleCleanupImages}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Nettoyer les images orphelines
+            </button>
+            {cleanupStatus && (
+              <p className="mt-2 text-sm text-gray-600">{cleanupStatus}</p>
+            )}
+          </div>
+
+          <div>
+            <button
+              onClick={handleCheckEventsWithoutImages}
+              className="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700"
+            >
+              Vérifier les événements sans image
+            </button>
+            {eventsWithoutImages.length > 0 && (
+              <div className="mt-2">
+                <p className="text-sm font-semibold text-yellow-800">
+                  {eventsWithoutImages.length} événement(s) sans image :
+                </p>
+                <ul className="mt-2 space-y-2">
+                  {eventsWithoutImages.map(event => (
+                    <li key={event.id} className="text-sm text-gray-600">
+                      {event.title} ({new Date(event.date).toLocaleDateString('fr-FR')})
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          {cleanupOldEventsStatus && (
+            <div className="mt-2 p-2 bg-green-100 rounded">
+              <p className="text-sm text-green-800">{cleanupOldEventsStatus}</p>
+            </div>
+          )}
+        </div>
+      </div>
+
       <form onSubmit={saveEvent} className="space-y-4 mb-8">
         <input
           type="text"
