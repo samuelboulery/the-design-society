@@ -116,21 +116,21 @@ export default function Events() {
 
   return (
     <section className="py-8 text-primary source-sans flex flex-col items-center relative">
-      <img src="/images/wow.svg" alt="omg" className="w-1/3 absolute top-[0px] right-[-140px] z-[-1]" />
-      <h2 className="text-2xl bowlby text-4xl mb-4 relative"><img src="/images/the.svg" alt="the" className="w-1/8 absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2" />Prochain événement</h2>
+      <img src="/images/wow.svg" alt="omg" className="w-1/3 absolute top-[0px] right-[-140px] z-[-1] hidden md:block" />
+      <h2 className="text-2xl md:text-4xl bowlby mb-4 relative px-4"><img src="/images/the.svg" alt="the" className="w-[2.75rem] md:w-1/8 absolute top-0 md:left-0 left-[20px] -translate-x-1/2 -translate-y-1/2" />Prochain événement</h2>
       {upcoming ? (
-        <div className="border border-primary bg-white border-4 p-3 mb-16 flex gap-4 shadow-[0.75rem_0.75rem_0_0_#252740] w-full">
+        <div className="border border-primary bg-white border-4 p-3 mb-16 flex flex-col md:flex-row gap-4 shadow-[0.75rem_0.75rem_0_0_#252740] w-full mx-4 md:mx-0">
           {upcoming.image_url && isValidImageUrl(upcoming.image_url) && (
             <img
             src={upcoming.image_url}
             alt={upcoming.title}
-            className="w-[356px] min-w-[356px] h-64 object-cover"
+            className="w-full md:w-[356px] md:min-w-[356px] h-48 md:h-64 object-cover"
             />
           )}
           <div className="content grow flex flex-col justify-between">
             <div className="text-content">
               <h3 className="text-xl font-bold">{upcoming.title}</h3>
-              <p>{formatDate(upcoming.date)}</p>
+              <p className='text-sm text-primary-low'>{formatDate(upcoming.date)}</p>
               <p className="mt-2 line-clamp-4">{upcoming.description}</p>
             </div>
             {upcoming.eventbrite_url && (
@@ -151,7 +151,7 @@ export default function Events() {
 
       {past.length > 0 && (
         <>
-        <h2 className="text-2xl bowlby text-4xl mt-16 mb-4 relative"><img src="/images/our.svg" alt="our" className="w-1/8 absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2" />Dernières dingz</h2>
+        <h2 className="text-2xl bowlby md:text-4xl mt-16 mb-4 relative"><img src="/images/our.svg" alt="our" className="w-[3rem] md:w-1/8 absolute top-0 md:left-0 left-[8px] -translate-x-1/2 -translate-y-1/2" />Dernières dingz</h2>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {past.slice(0, 3).map((e) => (
               <li key={e.id} className="border border-primary border-4 p-3 shadow-[0.75rem_0.75rem_0_0_#252740]">

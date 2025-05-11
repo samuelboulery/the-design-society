@@ -3,11 +3,11 @@ import React from 'react';
 export default function Header() {
   return (
     <section className="text-center pt-8 flex flex-col items-center justify-center text-primary source-sans relative">
-      <img src="/images/flower.svg" alt="bg" class="absolute top-[-100px] left-[-250px] w-1/8 z-[-1]" />
-      <img src="/images/logo.svg" alt="Logo de The Design Society" className="w-1/3 mx-auto" />
-      <div className="my-48 max-w-xl mx-auto">
-        <h1 className="text-5xl font-bold mb-8 bowlby">Un cercle pas si fermé de designers très ouverts.</h1>
-        <p className="text-lg text-gray-70">
+      <img src="/images/flower.svg" alt="bg" className="absolute top-[-100px] left-[-250px] w-1/8 z-[-1] hidden md:block" />
+      <img src="/images/logo.svg" alt="Logo de The Design Society" className="w-2/3 md:w-1/3 mx-auto" />
+      <div className="my-24 md:my-48 max-w-xl mx-auto px-4">
+        <h1 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 bowlby">Un cercle pas si fermé de designers très ouverts.</h1>
+        <p className="text-base md:text-lg text-gray-70">
           <strong>The Design Society</strong>, c'est tout nouveau, tout frais : une communauté lyonnaise née de l'envie de rassembler celles et ceux qui font le design aujourd'hui — et qui imaginent celui de demain.
         </p>
         <div className="flex justify-center space-x-6 py-4">

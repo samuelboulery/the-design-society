@@ -126,9 +126,9 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="py-8  mt-48 text-primary source-sans">
-      <h2 className="text-4xl bowlby mb-4 text-center">Envie de papoter ?</h2>
-      <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
+    <section className="py-8 mt-24 md:mt-48 text-primary source-sans">
+      <h2 className="text-3xl md:text-4xl bowlby mb-4 text-center">Envie de papoter ?</h2>
+      <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4 px-4 md:px-0">
         <div>
           <label htmlFor="subjectType" className="block text-sm font-medium text-gray-700 mb-1">
             Le sujet de ton message
@@ -175,16 +175,15 @@ export default function ContactForm() {
             onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
             className="w-full p-2 border border-primary border-2 focus:border-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             required
-            placeholder="Email, téléphone, site web, réseau social, etc."
+            placeholder="Email, téléphone, site web, réseau social, ou autre..."
           />
           <p className="mt-1 text-sm text-gray-500">
             Ex : bruce@wayne.com, +33612345678, @batman
           </p>
-          <img src="/images/star.svg" alt="star" className="absolute top-[-40px] right-[-75px] z-[-1] w-1/4" />
+          <img src="/images/star.svg" alt="star" className="absolute top-[-40px] right-[-75px] z-[-1] w-1/4 hidden md:block" />
         </div>
 
-        <div className="flex items-center space-x-2">
-          <label htmlFor="isHuman" className="relative flex items-center cursor-pointer select-none">
+        <div className="flex items-center space-x-2"> <label htmlFor="isHuman" className="relative flex items-center cursor-pointer select-none">
             <input
               type="checkbox"
               id="isHuman"
