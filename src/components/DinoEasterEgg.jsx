@@ -26,6 +26,7 @@ export default function DinoEasterEgg() {
       <img 
         src="/images/dino-easter-egg.png" 
         alt="Dino easter egg" 
+        width="64" height="64"
         className="w-16 h-16"
       />
     </div>

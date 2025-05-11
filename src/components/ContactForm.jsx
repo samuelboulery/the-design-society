@@ -185,7 +185,7 @@ export default function ContactForm() {
           <p className="mt-1 text-sm text-gray-500">
             Ex : bruce@wayne.com, +33612345678, @batman
           </p>
-          <img src="/images/star.svg" alt="star" className="absolute top-[-40px] right-[-75px] z-[-1] w-1/4 hidden md:block" />
+          <img src="/images/star.svg" alt="star" width="60" height="60" className="absolute top-[-40px] right-[-75px] z-[-1] w-1/4 hidden md:block" />
         </div>
 
         <div className="flex items-center space-x-2"> <label htmlFor="isHuman" className="relative flex items-center cursor-pointer select-none">
