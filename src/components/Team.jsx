@@ -31,7 +31,7 @@ const members = [
 export default function Team() {
   return (
     <section className="mt-16 md:mt-32 text-primary source-sans py-8 flex flex-col items-center relative px-4">
-      <h2 className="text-2xl md:text-4xl bowlby mb-4 relative"><img src="/images/the.svg" alt="the" className="w-[2.75rem] md:w-1/8 absolute top-0 md:left-0 left-[4px] -translate-x-1/2 -translate-y-1/2" />Dream Team</h2>
+      <h2 className="text-2xl md:text-4xl bowlby mb-4 relative"><img src="/images/the.svg" alt="the" className="w-[2.75rem] md:w-[3.25rem] absolute top-0 md:left-0 left-[4px] -translate-x-1/2 -translate-y-1/2" />Dream Team</h2>
       <img src="/images/omg.svg" alt="omg" className="w-1/2 absolute top-[-60px] left-[-190px] z-[-1] hidden md:block" />
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full">
         {members.map((m) => (

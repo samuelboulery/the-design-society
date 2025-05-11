@@ -137,7 +137,7 @@ export default function ContactForm() {
             id="subjectType"
             value={formData.subjectType}
             onChange={(e) => setFormData({ ...formData, subjectType: e.target.value })}
-            className="w-full p-2 border border-primary border-2 focus:border-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            className="w-full p-2 border border-primary border-2 focus:border-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none rounded-none"
             required
           >
             <option value="">Sélectionne une option</option>
@@ -157,7 +157,7 @@ export default function ContactForm() {
             id="message"
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: validateInput(e.target.value) })}
-            className="w-full p-2 border border-primary border-2 focus:border-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            className="w-full p-2 border border-primary border-2 focus:border-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all rounded-none"
             rows="4"
             required
             maxLength={1000}
@@ -165,7 +165,7 @@ export default function ContactForm() {
         </div>
 
         <div className="relative">
-          <label htmlFor="Ton contact" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="contact" className="block text-sm font-medium text-gray-700 mb-1">
             Ton contact
           </label>
           <input
@@ -173,7 +173,7 @@ export default function ContactForm() {
             id="contact"
             value={formData.contact}
             onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-            className="w-full p-2 border border-primary border-2 focus:border-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            className="w-full p-2 border border-primary border-2 focus:border-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all rounded-none"
             required
             placeholder="Email, téléphone, site web, réseau social, ou autre..."
           />
@@ -224,7 +224,7 @@ export default function ContactForm() {
             status.type === 'loading'
               ? 'Envoi en cours, veuillez patienter...'
               : !isHuman
-              ? 'Du dois d\'abords confirmer que tu n\'es pas un robot'
+              ? 'Tu dois d\'abords confirmer que tu n\'es pas un robot'
               : ''
           }
         >
