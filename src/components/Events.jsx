@@ -2,6 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { mockEvents } from '../mockData';
 
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const formattedDate = date.toLocaleDateString('fr-FR', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long'
+  });
+  
+  // Mettre en majuscule la première lettre du jour et du mois
+  return formattedDate.split(' ').map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1)
+  ).join(' ');
+};
+
 export default function Events() {
   const [events, setEvents] = useState([]);
   const [error, setError] = useState(null);
@@ -24,15 +38,15 @@ export default function Events() {
     try {
       setLoading(true);
       console.log('Tentative de récupération des événements...');
-      
+
       // Vérification de la structure de la table
       const { data: tableInfo, error: tableError } = await supabase
         .from('events')
         .select('id, title, date, description')
         .limit(1);
-      
+
       console.log('Structure de la table:', tableInfo);
-      
+
       if (tableError) {
         console.error('Erreur lors de la vérification de la table:', tableError);
         setError(tableError.message);
@@ -43,9 +57,9 @@ export default function Events() {
       const { count, error: countError } = await supabase
         .from('events')
         .select('*', { count: 'exact', head: true });
-      
+
       console.log('Nombre total d\'événements:', count);
-      
+
       if (countError) {
         console.error('Erreur lors du comptage:', countError);
         setError(countError.message);
@@ -56,7 +70,7 @@ export default function Events() {
         .from('events')
         .select('*')
         .order('date', { ascending: true });
-      
+
       if (error) {
         console.error('Erreur Supabase:', error);
         setError(error.message);
@@ -101,30 +115,35 @@ export default function Events() {
   }
 
   return (
-    <section className="py-8">
-      <h2 className="text-2xl font-semibold mb-4 text-center">Prochain événement</h2>
+    <section className="py-8 text-primary source-sans flex flex-col items-center relative">
+      <img src="/images/wow.svg" alt="omg" className="w-1/3 absolute top-[0px] right-[-140px] z-[-1] hidden md:block" />
+      <h2 className="text-2xl md:text-4xl bowlby mb-4 relative px-4"><img src="/images/the.svg" alt="the" className="w-[2.75rem] md:w-[3.25rem] absolute top-0 left-[20px] -translate-x-1/2 -translate-y-1/2" />Prochain événement</h2>
       {upcoming ? (
-        <div className="border p-4 rounded-lg mb-16">
+        <div className="border border-primary bg-white border-4 p-3 mb-16 flex flex-col md:flex-row gap-4 shadow-[0.75rem_0.75rem_0_0_#252740] w-full mx-4 md:mx-0">
           {upcoming.image_url && isValidImageUrl(upcoming.image_url) && (
-            <img 
-              src={upcoming.image_url} 
-              alt={upcoming.title}
-              className="w-full h-48 object-cover rounded-md mb-4"
+            <img
+            src={upcoming.image_url}
+            alt={upcoming.title}
+            className="w-full md:w-[356px] md:min-w-[356px] h-48 md:h-64 object-cover"
             />
           )}
-          <h3 className="text-xl font-bold">{upcoming.title}</h3>
-          <p>{new Date(upcoming.date).toLocaleDateString('fr-FR')}</p>
-          <p className="mt-2">{upcoming.description}</p>
-          {upcoming.eventbrite_url && (
-            <a 
+          <div className="content grow flex flex-col justify-between">
+            <div className="text-content">
+              <h3 className="text-xl font-bold">{upcoming.title}</h3>
+              <p className='text-sm text-primary-low'>{formatDate(upcoming.date)}</p>
+              <p className="mt-2 line-clamp-4">{upcoming.description}</p>
+            </div>
+            {upcoming.eventbrite_url && (
+              <a
               href={upcoming.eventbrite_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-4 px-6 py-2 bg-[#F6682F] text-white rounded-md hover:bg-[#E55A1F] transition-colors"
-            >
-              S'inscrire sur Eventbrite
-            </a>
-          )}
+              className="self-start inline-block mt-4 px-6 py-2 bg-primary text-white hover:bg-accent transition-colors"
+              >
+                S'inscrire sur Eventbrite
+              </a>
+            )}
+          </div>
         </div>
       ) : (
         <p className="text-center text-gray-600">Aucun événement à venir.</p>
@@ -132,25 +151,23 @@ export default function Events() {
 
       {past.length > 0 && (
         <>
-          <h2 className="text-2xl font-semibold mb-4 text-center">Événements passés</h2>
+        <h2 className="text-2xl bowlby md:text-4xl mt-16 mb-4 relative"><img src="/images/our.svg" alt="our" className="w-[3rem] md:w-[3.5rem] absolute top-0 md:left-0 left-[8px] -translate-x-1/2 -translate-y-1/2" />Dernières dingz</h2>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {past.slice(0, 3).map((e) => (
-              <li key={e.id} className="border p-4 rounded-lg">
+              <li key={e.id} className="border border-primary border-4 p-3 shadow-[0.75rem_0.75rem_0_0_#252740]">
                 {e.image_url && isValidImageUrl(e.image_url) && (
-                  <img 
-                    src={e.image_url} 
+                  <img
+                    src={e.image_url}
                     alt={e.title}
-                    className="w-full h-48 object-cover rounded-md mb-4"
+                    className="w-full h-48 object-cover mb-4"
                   />
                 )}
-                <h3 className="font-medium text-lg">{e.title}</h3>
-                <p className="text-sm text-gray-600">{new Date(e.date).toLocaleDateString('fr-FR')}</p>
-                <p className="mt-2 text-sm text-gray-700 line-clamp-3">{e.description}</p>
+                <h3 className="font-bold text-lg leading-none mb-1">{e.title}</h3>
+                <p className="text-sm text-primary-low">{formatDate(e.date)}</p>
               </li>
             ))}
           </ul>
         </>
       )}
-    </section>
-  );
+    </section> );
 }
