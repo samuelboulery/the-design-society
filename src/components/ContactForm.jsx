@@ -131,7 +131,7 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4 px-4 md:px-0">
         <div className="relative">
           <label htmlFor="subjectType" className="block text-sm font-medium text-gray-700 mb-1">
-            Le sujet de ton message
+            À quel sujet ?
           </label>
           <div className="relative">
             <select
@@ -156,7 +156,7 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-            Ton super message
+            Ton message
           </label>
           <textarea
             id="message"
@@ -171,7 +171,7 @@ export default function ContactForm() {
 
         <div className="relative">
           <label htmlFor="contact" className="block text-sm font-medium text-gray-700 mb-1">
-            Ton contact
+            Ton contact (la méthode que tu préfères !)
           </label>
           <input
             type="text"
@@ -180,10 +180,9 @@ export default function ContactForm() {
             onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
             className="w-full p-2 border border-primary border-2 focus:border-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all rounded-none"
             required
-            placeholder="Email, téléphone, site web, réseau social, ou autre..."
           />
           <p className="mt-1 text-sm text-gray-500">
-            Ex : bruce@wayne.com, +33612345678, @batman
+            Ex : exemple@surementgmail.com, +33612345678, @moncompte
           </p>
           <img src="/images/star.svg" alt="star" width="60" height="60" className="absolute top-[-40px] right-[-75px] z-[-1] w-1/4 hidden md:block" />
         </div>

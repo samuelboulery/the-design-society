@@ -52,18 +52,22 @@ export const cleanupOrphanedImages = async () => {
     const images = await getAllImages();
     const events = await getAllEvents();
 
-    // Créer un Set des URLs d'images utilisées dans les événements
-    const usedImageUrls = new Set(
+    // Créer un Set des noms de fichiers utilisés dans les URLs des événements (décodés)
+    const usedImageNames = new Set(
       events
         .filter(event => event.image_url)
-        .map(event => event.image_url)
+        .map(event => {
+          try {
+            return decodeURIComponent(event.image_url.split('/').pop());
+          } catch {
+            return null;
+          }
+        })
+        .filter(Boolean)
     );
 
     // Trouver les images orphelines
-    const orphanedImages = images.filter(image => {
-      const imageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/images/events/${image.name}`;
-      return !usedImageUrls.has(imageUrl);
-    });
+    const orphanedImages = images.filter(image => !usedImageNames.has(image.name));
 
     // Supprimer les images orphelines
     for (const image of orphanedImages) {
