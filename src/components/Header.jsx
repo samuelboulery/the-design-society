@@ -6,7 +6,7 @@ export default function Header() {
       <img src="/images/flower.svg" alt="bg" width="200" height="200" className="absolute top-[-100px] left-[-250px] w-[200px] h-[200px] z-[-1] hidden md:block" />
       <img src="/images/logo.svg" alt="Logo de The Design Society" width="400" height="200" className="w-2/3 md:w-1/3 mx-auto" />
       <div className="my-24 md:my-48 max-w-xl mx-auto px-4">
-        <h1 className="font-bold mb-6 md:mb-8"><span className="text-3xl md:text-5xl bowlby">Le nouveau cercle</span><br /><span className="text-2xl font-extrabold">(pas si fermé)</span> <br /><span className="text-3xl md:text-5xl bowlby">de designers</span> <br /><span className="text-2xl font-extrabold">(carrément ouverts).</span></h1>
+        <h1 className="font-bold mb-6 md:mb-8"><span className="text-3xl md:text-5xl bowlby">Le nouveau cercle</span><br /><span className="text:lg md:text-2xl font-extrabold">(pas si fermé)</span> <br /><span className="text-3xl md:text-5xl bowlby">de designers</span> <br /><span className="text-lg md:text-2xl font-extrabold">(carrément ouverts).</span></h1>
         <p className="text-base md:text-lg text-gray-70">
           Une société secrète si mal gardée qu’on a même fait un site. On y parle design, on y apprend ensemble, et surtout, on s’y retrouve entre designers lyonnais passionnés !
         </p>
