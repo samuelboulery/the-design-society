@@ -107,7 +107,7 @@ export default function Events() {
   };
 
   if (loading) {
-    return <div className="text-center py-8">Chargement des évènements...</div>;
+    return <div className="text-center py-8">Chargement des événements...</div>;
   }
 
   if (error) {
