@@ -141,7 +141,7 @@ export default function Events() {
               rel="noopener noreferrer"
               className="self-start inline-block mt-4 px-6 py-2 bg-primary text-white hover:bg-accent transition-colors"
               >
-                S'inscrire sur Eventbrite
+                M'inscrire sur Eventbrite
               </a>
             )}
           </div>
@@ -164,7 +164,7 @@ export default function Events() {
                     className="w-full h-48 object-cover mb-4"
                   />
                 )}
-                <h3 className="font-bold text-lg leading-none mb-1">{e.title}</h3>
+                <h3 className="font-bold text-lg leading-none line-clamp-2 mb-1">{e.title}</h3>
                 <p className="text-sm text-primary-low">{formatDate(e.date)}</p>
               </li>
             ))}
