@@ -147,7 +147,7 @@ export default function Events() {
           </div>
         </div>
       ) : (
-        <p className="text-center text-gray-600">On planche sur le sujet, mais ça arrive bientôt promis !</p>
+        <p className="text-center text-gray-600">On planche sur le sujet,<br />mais ça arrive bientôt promis !</p>
       )}
 
       {past.length > 0 && (
