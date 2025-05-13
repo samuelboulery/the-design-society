@@ -4,31 +4,31 @@ const members = [
   { 
     name: 'Samuel Boulery', 
     role: 'System Designer',
-    image: 'https://media.licdn.com/dms/image/v2/D4E03AQHw-pZp2tABBw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731875014620?e=1751500800&v=beta&t=wnr5tbwyJGZG3wGuDR2EM2ex4V8JyTMqtXQ9Kc8xVXI',
+    image: 'https://zivarhyllnumdxwutskw.supabase.co/storage/v1/object/public/images/team/sam.webp',
     linkedin: 'https://www.linkedin.com/in/samuel-boulery/'
   },
   { 
     name: 'Daniela Moncada', 
     role: 'UX/UI Designer',
-    image: 'https://media.licdn.com/dms/image/v2/C4D03AQEP95sz8Jp1zQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1603805161907?e=1751500800&v=beta&t=4lYBFXzGxgtcNcdhjYJ0KlEVmCISldHqcC41yHy2BPU',
+    image: 'https://zivarhyllnumdxwutskw.supabase.co/storage/v1/object/public/images/team/dani.webp',
     linkedin: 'https://www.linkedin.com/in/daniela-moncada-alvarez/'
   },
   { 
     name: 'Floriane Julliard', 
     role: 'System Designer',
-    image: 'https://media.licdn.com/dms/image/v2/D4E03AQEsXdhKIpwWaQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1680599287273?e=1751500800&v=beta&t=398uYboy5Gp3oAxUXR-Z3Y2dyItIkD8rqV7rMiQ9Odw',
+    image: 'https://zivarhyllnumdxwutskw.supabase.co/storage/v1/object/public/images/team/flo.webp',
     linkedin: 'https://www.linkedin.com/in/floriane-julliard/'
   },
   { 
     name: 'Loic Pelletier', 
     role: 'Lead Product Designer',
-    image: 'https://media.licdn.com/dms/image/v2/D4E03AQGFP_-b6-8ulA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1696577782501?e=1751500800&v=beta&t=Km8I4ITmPHDYcT9CezIk9HmjMMQbUMsTMpbyV7BjCbA',
+    image: 'https://zivarhyllnumdxwutskw.supabase.co/storage/v1/object/public/images/team/loic.webp',
     linkedin: 'https://www.linkedin.com/in/loicpelletier/'
   },
   { 
     name: 'Léa Maurin', 
     role: 'UX/UI Designer',
-    image: 'https://media.licdn.com/dms/image/v2/C5603AQFGJA7kH-CmLg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1549475892461?e=1751500800&v=beta&t=utWX_j-ADwdDwV9o9BPvlpJyyTL6yj55rgohOLjKDa4',
+    image: 'https://zivarhyllnumdxwutskw.supabase.co/storage/v1/object/public/images/team/lea.webp',
     linkedin: 'https://www.linkedin.com/in/l%C3%A9a-maurin-b90061a4/'
   }
 ];
