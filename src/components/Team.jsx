@@ -55,7 +55,7 @@ export default function Team() {
               href={m.linkedin} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-block mt-2 px-4 py-2 bg-primary text-white hover:bg-accent transition-colors"
+              className="inline-block mt-2 px-4 py-2 bg-primary text-white hover:bg-black transition-colors"
             >
               Profil LinkedIn
             </a>

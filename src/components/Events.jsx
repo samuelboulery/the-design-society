@@ -139,7 +139,7 @@ export default function Events() {
               href={upcoming.eventbrite_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="self-start inline-block mt-4 px-6 py-2 bg-primary text-white hover:bg-accent transition-colors"
+              className="self-start inline-block mt-4 px-6 py-2 bg-primary text-white hover:bg-black transition-colors"
               >
                 M'inscrire sur Eventbrite
               </a>
