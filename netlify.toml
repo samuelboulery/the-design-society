@@ -10,6 +10,9 @@
   command = "npm run build"
   environment = { VITE_ENV = "production" }
 
+# Variables d'environnement pour les fonctions Netlify
+# Note: SLACK_WEBHOOK_URL doit être configurée dans l'interface Netlify
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -97,10 +97,12 @@ export default function ContactForm() {
     setStatus({ type: 'loading', message: 'Envoi en cours...' });
 
     try {
-      const webhookUrl = import.meta.env.VITE_SLACK_WEBHOOK_URL;
-      const webhookPath = new URL(webhookUrl).pathname;
+      // En développement, utiliser le proxy Vite
+      // En production, utiliser la fonction Netlify
+      const isDevelopment = import.meta.env.DEV;
+      const endpoint = isDevelopment ? '/api/slack' : '/.netlify/functions/slack-webhook';
 
-      const response = await fetch(`/api/slack${webhookPath}`, {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
