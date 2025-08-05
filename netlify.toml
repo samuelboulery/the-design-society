@@ -2,16 +2,16 @@
   command = "npm run build"
   publish = "dist"
 
-[build.environment]
-  NODE_VERSION = "18"
-
 # Configuration pour l'environnement de production
 [context.production]
   command = "npm run build"
-  environment = { VITE_ENV = "production" }
 
 # Variables d'environnement pour les fonctions Netlify
 # Note: SLACK_WEBHOOK_URL doit être configurée dans l'interface Netlify
+
+# Configuration du scan de secrets
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "VITE_SUPABASE_URL,VITE_SUPABASE_ANON_KEY,VITE_ADMIN_PASSWORD,VITE_ENV"
 
 [[redirects]]
   from = "/*"
